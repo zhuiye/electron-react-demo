@@ -85,9 +85,8 @@
       "./assets/**"
     ],
     "publish": {
-      "provider": "github",
-      "owner": "electron-react-boilerplate",
-      "repo": "electron-react-boilerplate"
+      "provider": "generic",
+      "url": "http://localhost:4000"
     }
   },
   "repository": {

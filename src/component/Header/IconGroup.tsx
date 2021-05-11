@@ -7,7 +7,7 @@ import {
 } from '@ant-design/icons';
 import styles from './iconGroup.module.css';
 import { ipcRenderer } from 'electron';
-import { WindowControl } from '../../ipcMain/windowControl';
+import { WindowControl } from 'electron/windowControl';
 
 const size = 20;
 

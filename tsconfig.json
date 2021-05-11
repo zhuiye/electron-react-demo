@@ -22,7 +22,10 @@
     "resolveJsonModule": true,
     "allowJs": true,
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
-    "baseUrl": "src"
+    "baseUrl": ".",
+    "paths": {
+      "*": ["*", "src/*"]
+    }
   },
   "exclude": [
     "test",

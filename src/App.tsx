@@ -1,18 +1,16 @@
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import icon from '../assets/icon.svg';
 import './App.global.css';
+import 'antd/dist/antd.css';
+import { ConfigProvider, DatePicker, message, Modal, Button } from 'antd';
 import Header from './component/Header';
-import { ipcRenderer } from 'electron';
+import { ipcRenderer, shell } from 'electron';
 import isElectron from './utils/isElectron';
 import { Grid } from '@ibingli/rs_shared_component';
-import css from './test.module.css';
+import zhCN from 'antd/lib/locale/zh_CN';
 
 const Hello = () => {
-  ipcRenderer.on('receiveMessage', (event: any, args: any) => {
-    console.log('接收到主进程的消息', args);
-  });
-
   return (
     <div>
       <Header />
@@ -26,10 +24,17 @@ const Hello = () => {
         ]}
       >
         <header key="header" style={{ border: '1px solid red' }}>
-          header
+          <Button
+            type="primary"
+            onClick={() => {
+              // shell.openExternal('https://www.baidu.com');
+            }}
+          >
+            检查更新
+          </Button>
         </header>
         <section key="toolbar" style={{ border: '1px solid red' }}>
-          toolbar
+          <Button type="primary">我是button</Button>
         </section>
       </Grid>
     </div>
@@ -38,10 +43,12 @@ const Hello = () => {
 
 export default function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" component={Hello} />
-      </Switch>
-    </Router>
+    <ConfigProvider locale={zhCN}>
+      <Router>
+        <Switch>
+          <Route path="/" component={Hello} />
+        </Switch>
+      </Router>
+    </ConfigProvider>
   );
 }
